@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         platform: ["linux/amd64", "linux/arm64"]
-        python: ["3.11"]
+        python: ["3.10", "3.11", "3.12"]
       fail-fast: false
     steps:
       - name: checkout
@@ -41,7 +41,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: latest, ${{ env.TAG }}-base
+          tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-base
           build-args: |
             PYTHON_VERSION=${{ matrix.python }}
             POETRY_VERSION=1.8.3
@@ -53,7 +53,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: latest, ${{ env.TAG }}-just
+          tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-just
           build-args: |
               PYTHON_VERSION=${{ matrix.python }}
               POETRY_VERSION=1.8.3
@@ -65,19 +65,19 @@ jobs:
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: latest, ${{ env.TAG }}-terraform
+            tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-terraform
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
             target: terraform
-      - name: with terraform
+      - name: with gcloud
         uses: docker/build-push-action@v5
         with:
             context: .
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: latest, ${{ env.TAG }}-gcloud
+            tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-gcloud
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
