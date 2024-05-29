@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04 AS base
 
 ARG PYTHON_VERSION=3.11
-ARG POETRY_VERSION=1.8.3
 ARG VENV_IN_PROJECT=true
 ARG TIMEZONE=Europe/Amsterdam
 
@@ -30,7 +29,7 @@ RUN echo 'eval "$(pyenv init -)"' >> /home/vscode/.bashrc \
     && pip install --no-cache-dir --upgrade pip
 
 # Poetry
-RUN pipx install poetry==${POETRY_VERSION}
+RUN pipx install poetry
 
 # pipx distros
 ENV PATH="/home/vscode/.local/bin:$PATH"
