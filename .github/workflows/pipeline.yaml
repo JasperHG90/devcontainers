@@ -45,7 +45,6 @@ jobs:
           tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-base, jhginn/devcontainer:${{ env.TAG }}-base
           build-args: |
             PYTHON_VERSION=${{ matrix.python }}
-            POETRY_VERSION=1.8.3
           target: base
       - name: with just
         uses: docker/build-push-action@v5
@@ -57,7 +56,6 @@ jobs:
           tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-just, jhginn/devcontainer:${{ env.TAG }}-just
           build-args: |
               PYTHON_VERSION=${{ matrix.python }}
-              POETRY_VERSION=1.8.3
           target: just
       - name: with terraform
         uses: docker/build-push-action@v5
@@ -69,7 +67,6 @@ jobs:
             tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-terraform, jhginn/devcontainer:${{ env.TAG }}-terraform
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
-                POETRY_VERSION=1.8.3
             target: terraform
       - name: with gcloud
         uses: docker/build-push-action@v5
@@ -81,5 +78,4 @@ jobs:
             tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-gcloud, jhginn/devcontainer:${{ env.TAG }}-gcloud
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
-                POETRY_VERSION=1.8.3
             target: gcloud
