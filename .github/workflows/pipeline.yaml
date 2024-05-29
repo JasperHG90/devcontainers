@@ -33,7 +33,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: set tag
         run: |
-            echo "TAG=$(echo ${{ matrix.platform }} | tr -d '/')-p$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
+            echo "TAG=$(echo ${{ matrix.platform }} | tr / -)-ubuntu2204-p$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
       - name: Base img
         uses: docker/build-push-action@v5
         with:
