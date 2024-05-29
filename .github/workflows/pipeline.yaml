@@ -34,6 +34,7 @@ jobs:
       - name: set tag
         run: |
             echo "TAG=$(echo ${{ matrix.platform }} | tr / -)-ubuntu2204-p$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
+            echo "LATEST_TAG=$(echo ${{ matrix.platform }} | tr / -)-ubuntu2204-p$(echo ${{ matrix.python }} | tr -d '.')-latest" >> $GITHUB_ENV
       - name: Base img
         uses: docker/build-push-action@v5
         with:
@@ -41,7 +42,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: jhginn/devcontainer:base-latest, jhginn/devcontainer:${{ env.TAG }}-base
+          tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-base, jhginn/devcontainer:${{ env.TAG }}-base
           build-args: |
             PYTHON_VERSION=${{ matrix.python }}
             POETRY_VERSION=1.8.3
@@ -53,7 +54,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: jhginn/devcontainer:just-latest, jhginn/devcontainer:${{ env.TAG }}-just
+          tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-just, jhginn/devcontainer:${{ env.TAG }}-just
           build-args: |
               PYTHON_VERSION=${{ matrix.python }}
               POETRY_VERSION=1.8.3
@@ -65,7 +66,7 @@ jobs:
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: jhginn/devcontainer:terraform-latest, jhginn/devcontainer:${{ env.TAG }}-terraform
+            tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-terraform, jhginn/devcontainer:${{ env.TAG }}-terraform
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
@@ -77,7 +78,7 @@ jobs:
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: jhginn/devcontainer:gcloud-latest, jhginn/devcontainer:${{ env.TAG }}-gcloud
+            tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-gcloud, jhginn/devcontainer:${{ env.TAG }}-gcloud
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
