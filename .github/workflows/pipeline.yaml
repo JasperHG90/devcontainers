@@ -41,7 +41,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-base
+          tags: jhginn/devcontainer:base-latest, jhginn/devcontainer:${{ env.TAG }}-base
           build-args: |
             PYTHON_VERSION=${{ matrix.python }}
             POETRY_VERSION=1.8.3
@@ -53,7 +53,7 @@ jobs:
           file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-just
+          tags: jhginn/devcontainer:just-latest, jhginn/devcontainer:${{ env.TAG }}-just
           build-args: |
               PYTHON_VERSION=${{ matrix.python }}
               POETRY_VERSION=1.8.3
@@ -65,7 +65,7 @@ jobs:
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-terraform
+            tags: jhginn/devcontainer:terraform-latest, jhginn/devcontainer:${{ env.TAG }}-terraform
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
@@ -77,7 +77,7 @@ jobs:
             file: ./Dockerfile
             platforms: ${{ matrix.platform }}
             push: true
-            tags: jhginn/devcontainer:latest, jhginn/devcontainer:${{ env.TAG }}-gcloud
+            tags: jhginn/devcontainer:gcloud-latest, jhginn/devcontainer:${{ env.TAG }}-gcloud
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
                 POETRY_VERSION=1.8.3
