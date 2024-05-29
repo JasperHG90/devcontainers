@@ -14,7 +14,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-  build-dependencies-image:
+  build-and-push:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./dependencies.dockerfile
+          file: ./Dockerfile
           platforms: ${{ matrix.platform }}
           push: false
           tags: latest, ${{ matrix.platform }}-p${{ matrix.python }}
