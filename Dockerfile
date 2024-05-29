@@ -62,7 +62,7 @@ RUN apt-get update -y \
     && apt-get install terraform \
     && rm -rf /var/lib/apt/lists/*
 
-FROM terraform AS gcp
+FROM terraform AS gcloud
 
 RUN apt-get update -y \
     && apt-get install -y apt-transport-https \
