@@ -19,7 +19,8 @@ jobs:
     strategy:
       matrix:
         platform: ["linux/amd64", "linux/arm64"]
-        python: ["3.10", "3.11", "3.12"]
+        python: ["3.11", "3.12"]
+        target: ["base", "just", "terraform", "gcp"]
       fail-fast: false
     steps:
       - name: checkout
