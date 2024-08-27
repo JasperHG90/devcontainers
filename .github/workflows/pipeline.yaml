@@ -28,8 +28,12 @@ jobs:
         id: filter
         with:
           filters: |
-            poetry: Dockerfile.poetry
-            uv: Dockerfile.uv
+            poetry: 
+              - Dockerfile.poetry
+              - .github/workflows/pipeline.yaml
+            uv: 
+              - Dockerfile.uv
+              - .github/workflows/pipeline.yaml
   build-and-push:
     runs-on: ubuntu-latest
     needs: changes
