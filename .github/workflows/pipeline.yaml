@@ -21,13 +21,15 @@ jobs:
       # Expose matched filters as job 'packages' output variable
       packages: ${{ steps.filter.outputs.changes }}
     steps:
-    # For pull requests it's not necessary to checkout the code
-    - uses: dorny/paths-filter@v3
-      id: filter
-      with:
-        filters: |
-          poetry: Dockerfile.poetry
-          uv: Dockerfile.uv
+      - name: checkout
+        uses: actions/checkout@v4
+      # For pull requests it's not necessary to checkout the code
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            poetry: Dockerfile.poetry
+            uv: Dockerfile.uv
   build-and-push:
     runs-on: ubuntu-latest
     needs: changes
