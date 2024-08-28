@@ -4,7 +4,7 @@ This repository contains devcontainers that I often use.
 
 There are two Dockerfiles (one with [poetry](https://python-poetry.org/) and one with [uv](https://github.com/astral-sh/uv)).
 
-Each dockerfile contains the following targets.
+Each dockerfile contains the following targets. 
 
 1. `base` contains python 3.10/11/12, poetry **or** uv, pipx
 2. `just` adds just to (1)
