@@ -52,6 +52,7 @@ RUN apt-get update -y \
 
 FROM terraform AS gcloud
 
+# Trigger
 RUN apt-get update -y \
     && apt-get install -y apt-transport-https \
         ca-certificates \
