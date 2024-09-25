@@ -55,8 +55,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: set tag
         run: |
-            echo "TAG=$(ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
-            echo "LATEST_TAG=$(ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-latest" >> $GITHUB_ENV
+            echo "TAG=ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
+            echo "LATEST_TAG=ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-latest" >> $GITHUB_ENV
       - name: Base img
         uses: docker/build-push-action@v5
         with:
@@ -101,3 +101,6 @@ jobs:
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
             target: gcloud
+
+
+TAG=ubuntu2204-py-$(echo 3.10 | tr -d '.')-$(date +%F | tr -d '-')
