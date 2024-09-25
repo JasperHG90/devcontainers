@@ -40,7 +40,6 @@ jobs:
     if: ${{ needs.changes.outputs.packages != '[]' && needs.changes.outputs.packages != '' }}
     strategy:
       matrix:
-        platform: ["linux/amd64", "linux/arm64"]
         python: ["3.10", "3.11", "3.12"]
         base: ${{ fromJSON(needs.changes.outputs.packages) }}
       fail-fast: false
@@ -56,14 +55,14 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: set tag
         run: |
-            echo "TAG=$(echo ${{ matrix.platform }} | tr / -)-ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
-            echo "LATEST_TAG=$(echo ${{ matrix.platform }} | tr / -)-ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-latest" >> $GITHUB_ENV
+            echo "TAG=$(ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-$(date +%F | tr -d '-')" >> $GITHUB_ENV
+            echo "LATEST_TAG=$(ubuntu2204-py${{ matrix.base }}$(echo ${{ matrix.python }} | tr -d '.')-latest" >> $GITHUB_ENV
       - name: Base img
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile.${{ matrix.base }}
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-base, jhginn/devcontainer:${{ env.TAG }}-base
           build-args: |
@@ -74,7 +73,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.${{ matrix.base }}
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-just, jhginn/devcontainer:${{ env.TAG }}-just
           build-args: |
@@ -85,7 +84,7 @@ jobs:
         with:
             context: .
             file: ./Dockerfile.${{ matrix.base }}
-            platforms: ${{ matrix.platform }}
+            platforms: linux/amd64,linux/arm64
             push: true
             tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-terraform, jhginn/devcontainer:${{ env.TAG }}-terraform
             build-args: |
@@ -96,7 +95,7 @@ jobs:
         with:
             context: .
             file: ./Dockerfile.${{ matrix.base }}
-            platforms: ${{ matrix.platform }}
+            platforms: linux/amd64,linux/arm64
             push: true
             tags: jhginn/devcontainer:${{ env.LATEST_TAG }}-gcloud, jhginn/devcontainer:${{ env.TAG }}-gcloud
             build-args: |
