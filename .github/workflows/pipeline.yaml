@@ -101,6 +101,3 @@ jobs:
             build-args: |
                 PYTHON_VERSION=${{ matrix.python }}
             target: gcloud
-
-
-TAG=ubuntu2204-py-$(echo 3.10 | tr -d '.')-$(date +%F | tr -d '-')
