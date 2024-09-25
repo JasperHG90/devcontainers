@@ -11,7 +11,6 @@ ENV HOME="/home/vscode"
 ENV PIPX_HOME="$HOME/.pipx"
 # Cache these in the workspace. For UV this is also important
 #  to be able to hardlink dependencies.
-ENV PRE_COMMIT_HOME="$HOME/workspace/.cache/pre-commit"
 ENV UV_CACHE_DIR="$HOME/workspace/.cache/uv"
 ENV UV_PYTHON_PREFERENCE="only-managed"
 
