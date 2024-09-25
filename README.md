@@ -16,13 +16,13 @@ These images are built once/month and pushed to [dockerhub](https://hub.docker.c
 Tags are structured as follows:
 
 ```
-linux-<PLATFORM>-ubuntu2204-py<POETRY/UV><PYTHON-VERSION>-<YYYMMDD>-<TARGET>
+ubuntu2204-py<POETRY/UV><PYTHON-VERSION>-<YYYMMDD>-<TARGET>
 ```
 
 For example:
 
 ```
-linux-arm64-ubuntu2204-pypoetry312-20240827-gcloud
+ubuntu2204-pypoetry312-20240827-gcloud
 ```
 
 ## Sample `devcontainer.json`
