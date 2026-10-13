@@ -40,7 +40,7 @@ jobs:
     if: ${{ needs.changes.outputs.packages != '[]' && needs.changes.outputs.packages != '' }}
     strategy:
       matrix:
-        python: ["3.10", "3.11", "3.12"]
+        python: ["3.11", "3.12", "3.13"]
         base: ${{ fromJSON(needs.changes.outputs.packages) }}
       fail-fast: false
     steps:
