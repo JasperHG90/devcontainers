@@ -28,9 +28,6 @@ jobs:
         id: filter
         with:
           filters: |
-            poetry: 
-              - Dockerfile.poetry
-              - .github/workflows/pipeline.yaml
             uv: 
               - Dockerfile.uv
               - .github/workflows/pipeline.yaml
